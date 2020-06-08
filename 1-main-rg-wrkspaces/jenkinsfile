@@ -23,7 +23,8 @@ try {
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
           sh 'terraform init'
-        }     
+          }     
+         }
+        }  
       }
-   }  
 }
