@@ -1,11 +1,6 @@
-//Jenkinsfile
+// Jenkinsfile
 
 try {
-
-  stage('testing')
-    node {
-    echo "Testing the pipeline"
-    }
 
   stage('checkout') {
       node {
@@ -13,8 +8,6 @@ try {
         checkout scm
       }
   }
-
-
   stage('init') {
     node {  
       withCredentials([
@@ -22,21 +15,49 @@ try {
           ansiColor('xterm') {
           sh 'terraform init'
           }     
-         }
-        }  
-      }
-      
-      
-      stage('create workspace') {
+        }
+    }  
+  }    
+  stage('create workspace') {
     node {  
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'terraform workspace new "Dummy"'
+          sh 'terraform workspace new "production"'
           }     
-         }
-        }  
-       }
+        }
+    }  
+  }  
+  stage('plan') {
+    node {  
+      withCredentials([
+        azureServicePrincipal('azserviceprincipal')]) {
+          ansiColor('xterm') {
+          sh 'terraform plan -var-file="./terraform.tfstate.d/production/prod.tfvars" -out ./terraform.tfstate.d/production/prod.tfplan'
+          }     
+        }
+    }  
+  }
+  stage('apply') {
+    node {  
+      withCredentials([
+        azureServicePrincipal('azserviceprincipal')]) {
+          ansiColor('xterm') {
+          sh 'terraform apply -var-file="./terraform.tfstate.d/production/prod.tfvars"'
+          }     
+        }
+    }  
+  }
+  stage('show') {
+    node {  
+      withCredentials([
+        azureServicePrincipal('azserviceprincipal')]) {
+          ansiColor('xterm') {
+          sh 'terraform show'
+          }     
+        }
+    }  
+  }
 }
 catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException flowError) {
   currentBuild.result = 'ABORTED'
