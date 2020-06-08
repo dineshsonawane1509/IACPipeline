@@ -13,8 +13,9 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'cd ./1-main-rg-wrkspaces'
+          sh 'cd ./1-main-rg-wrkspaces/ && ls -a'
           sh 'terraform init'
+          sh 'pwd && ls -a'
           }     
         }
     }  
