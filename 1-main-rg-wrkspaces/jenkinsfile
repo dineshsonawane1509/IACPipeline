@@ -35,7 +35,7 @@ try {
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
           sh 'pwd && ls -a'
-          sh 'terraform plan -var-file="./1-main-rg-wrkspaces/prod.tfvars" -out ./1-main-rg-wrkspaces/terraform.tfstate.d/production/prod.tfplan'
+          sh 'cd ./1-main-rg-wrkspaces/ && terraform plan -var-file="./prod.tfvars" -out ./terraform.tfstate.d/production/prod.tfplan'
           }     
         }
     }  
@@ -45,7 +45,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'terraform apply -var-file="./1-main-rg-wrkspaces/prod.tfvars"'
+          sh 'cd ./1-main-rg-wrkspaces/ && terraform apply -var-file="./prod.tfvars"'
           }     
         }
     }  
