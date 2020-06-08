@@ -33,7 +33,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'terraform plan -var-file="./1-main-rg-wrkspaces/terraform.tfstate.d/production/prod.tfvars" -out ./1-main-rg-wrkspaces/terraform.tfstate.d/production/prod.tfplan'
+          sh 'terraform plan -var-file="./1-main-rg-wrkspaces/prod.tfvars" -out ./1-main-rg-wrkspaces/terraform.tfstate.d/production/prod.tfplan'
           }     
         }
     }  
@@ -43,7 +43,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'terraform apply -var-file="./1-main-rg-wrkspaces/terraform.tfstate.d/production/prod.tfvars"'
+          sh 'terraform apply -var-file="./1-main-rg-wrkspaces/prod.tfvars"'
           }     
         }
     }  
