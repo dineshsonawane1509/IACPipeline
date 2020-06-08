@@ -13,6 +13,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
+          sh 'cd ./1-main-rg-wrkspaces'
           sh 'terraform init'
           }     
         }
@@ -33,9 +34,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'pwd'
-          sh 'cd /var/lib/jenkins/workspace/Terra && ls -a'
-          sh 'cd ./1-main-rg-wrkspaces/prod.tfvars && ls -a'
+          sh 'pwd && ls -a'
           sh 'terraform plan -var-file="./1-main-rg-wrkspaces/prod.tfvars" -out ./1-main-rg-wrkspaces/terraform.tfstate.d/production/prod.tfplan'
           }     
         }
