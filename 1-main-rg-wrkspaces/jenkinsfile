@@ -1,7 +1,5 @@
 //Jenkinsfile
 
-String credentialsId = 'unameandpassword'
-
 try {
 
   stage('testing')
