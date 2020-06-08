@@ -34,7 +34,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'terraform Dummy'
+          sh 'terraform workspace new "Dummy"'
           }     
          }
         }  
