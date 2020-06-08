@@ -33,7 +33,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'cd /var/lib/jenkins/workspace/Terra'
+          sh 'cd /var/lib/jenkins/workspace/Terra && ls -a'
           sh 'terraform plan -var-file="./1-main-rg-wrkspaces/prod.tfvars" -out ./1-main-rg-wrkspaces/terraform.tfstate.d/production/prod.tfplan'
           }     
         }
