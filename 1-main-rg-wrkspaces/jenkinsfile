@@ -34,8 +34,6 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'sudo apt-get install az_cli'
-          sh 'sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash'
           sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
           sh 'cd ./1-main-rg-wrkspaces/ && terraform plan -var-file="./prod.tfvars" -out ./terraform.tfstate.d/production/prod.tfplan'
           }     
