@@ -12,7 +12,7 @@
 # DATA
 #############################################################################
 
-  data "azurerm_subscription" "current" {}
+  #data "azurerm_subscription" "current" {}
   #test = lookup(var.comp_env,var.environment_name) 
   #rgname = "rg-udxmaestro-${test}-${var.location}-001"
 
@@ -36,8 +36,12 @@
 #############################################################################
 provider "azurerm" {
    version = "=2.10.0"
+   subscription_id = "AZURE_SUBSCRIPTION_ID"
+   tenant_id = "AZURE_TENANT_ID"
+   client_id = "AZURE_CLIENT_ID"
+   client_secret = "AZURE_CLIENT_SECRET"    
    features {}
-}
+}         
 
 
 #############################################################################
