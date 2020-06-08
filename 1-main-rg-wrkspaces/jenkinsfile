@@ -13,8 +13,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'cd ./1-main-rg-wrkspaces/ && ls -a'
-          sh 'terraform init'
+          sh 'cd ./1-main-rg-wrkspaces/ && terraform init && ls -a'
           sh 'pwd && ls -a'
           }     
         }
@@ -25,7 +24,7 @@ try {
       withCredentials([
         azureServicePrincipal('azserviceprincipal')]) {
           ansiColor('xterm') {
-          sh 'terraform workspace new "production"'
+          sh 'cd ./1-main-rg-wrkspaces/terraform.tfstate.d/ && terraform workspace new "production"'
           }     
         }
     }  
