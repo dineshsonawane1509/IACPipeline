@@ -1,8 +1,8 @@
 system = "terraexample"
 location = "westus"
-azuread_service_principal_id = "dcb77bf0-75b5-4f4c-87c6-954cffa79dd8"
-client_id = "dcb77bf0-75b5-4f4c-87c6-954cffa79dd8"
-client_secret = "BamXJxkjC.O9ZBmL90P.obpA_7MLmf0V8-" 
+azuread_service_principal_id = "AZURE_CLIENT_ID"
+client_id = "AZURE_CLIENT_ID"
+client_secret = "AZURE_CLIENT_SECRET" 
 
 comp_env = {
     development = "dev"
