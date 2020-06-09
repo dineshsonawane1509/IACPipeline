@@ -12,7 +12,7 @@ variable "location" {
 variable "azuread_service_principal_id" {
     type = string
     description = "Azure Service account of terraform File execution"
-    default =  "6101397b-6b8d-4461-818a-ca7cef07ce8c"
+    default =  "AZURE_CLIENT_ID"
 }
 
 variable "aksclustername" {
